@@ -1,0 +1,4 @@
+Bike : QUANTITY=3, TITLE=walking, PRICE=20
+Bike : QUANTITY=1, TITLE=allroad, PRICE=30
+
+
