@@ -16,7 +16,8 @@ public class DaoDirector {
     public DaoDirector(Criteria criteria) {
 
         this.criteria = criteria;
-        comands.put("Oven", new BikeDaoCommand(criteria));
+        comands.put("Bike", new BikeDaoCommand(criteria));
+        comands.put("Scateboard", new ScateboardDaoCommand(criteria));
 
     }
 

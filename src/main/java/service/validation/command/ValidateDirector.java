@@ -10,6 +10,7 @@ public class ValidateDirector {
     public ValidateDirector(Map<Object,Object> criteriaMap) {
 
         commandMap.put("Bike" , new BikeValidator(criteriaMap));
+        commandMap.put("Scateboard" , new ScateboardValidator(criteriaMap));
 
 
     }

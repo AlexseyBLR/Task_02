@@ -5,21 +5,27 @@ import entity.criteria.SearchCriteria;
 public class Bike extends SportEquipment {
 
     private SearchCriteria.Bike BIKE;
-    private String walkin;
+    private String title;
     private int price;
+    private int quantity;
 
-    public Bike(){}
+    public Bike() {
+    }
 
 
     public String getBike() {
-        return walkin;
+        return title;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public SearchCriteria.Bike getCategory(){
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public SearchCriteria.Bike getCategory() {
         return BIKE;
     }
 
@@ -27,21 +33,27 @@ public class Bike extends SportEquipment {
         this.BIKE = BIKE;
     }
 
-    public void setWalkin(String walkin) {
-        this.walkin = walkin;
+    public void setTitle(String title) {
+        this.title = title;
     }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-
-
 
     @Override
     public String toString() {
         return "BIKE : " +
-                "price = " + price;
+                "title=" + title +
+                ", " +
+                "quantity=" + quantity +
+                ", " +
+                "price=" + price +
+                ";";
 
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

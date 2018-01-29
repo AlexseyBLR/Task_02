@@ -4,6 +4,7 @@ package dao.impl;
 import dao.FileParser;
 import dao.SportEquipmentDAO;
 import dao.impl.Properties.Properties;
+import entity.Scateboard;
 import entity.SportEquipment;
 import entity.criteria.Criteria;
 
@@ -19,34 +20,26 @@ public abstract class AbstractAppliencTxtDAO implements SportEquipmentDAO {
     protected abstract SportEquipment buildAppliance(Map<String, String> appliancMap);
 
     @Override
-    public  <E> SportEquipment find(Criteria<E> criteria)  {
+    public <E> SportEquipment find(Criteria<E> criteria) {
 
-        FileParser fileParser = new FileParser(file , criteria);
+        FileParser fileParser = new FileParser(file, criteria);
 
         SportEquipment appliance = null;
 
 
-        Map<String , String> appMap = null;
+        Map<String, String> appMap = null;
         try {
             appMap = fileParser.getApplianceMap(getTypeName());
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (appMap != null) {
-                appliance = buildAppliance(appMap);
-            }
+            appliance = buildAppliance(appMap);
+        }
 
         return appliance;
 
     }
-
-
-
-
-
-
-
-
 
 
 }

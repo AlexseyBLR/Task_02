@@ -3,6 +3,7 @@ package dao.impl.txtSourceImpl;
 
 import dao.impl.AbstractAppliencTxtDAO;
 import entity.Bike;
+import entity.Scateboard;
 import entity.criteria.SearchCriteria;
 
 import java.util.Map;
@@ -12,7 +13,7 @@ public class BikeTxtDaoImpl extends AbstractAppliencTxtDAO {
 
     @Override
     protected String getTypeName() {
-        return "Laptop";
+        return "Bike";
     }
 
 
@@ -23,7 +24,9 @@ public class BikeTxtDaoImpl extends AbstractAppliencTxtDAO {
 
         bike.setPrice(Integer.parseInt(appliancMap.get(SearchCriteria.Bike.PRICE.name())));
 
-        bike.setWalkin(appliancMap.get(SearchCriteria.Bike.TITLE.name()));
+        bike.setTitle(appliancMap.get(SearchCriteria.Bike.TITLE.name()));
+
+        bike.setQuantity(Integer.parseInt(appliancMap.get(SearchCriteria.Bike.QUANTITY.name())));
 
 
         return bike;
