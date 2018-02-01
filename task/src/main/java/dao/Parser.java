@@ -4,11 +4,11 @@ import dao.property.Properties;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Parser {
+
+    private Map<String, Map<String, String>> goodsMap = new HashMap<String, Map<String, String>>();
 
     private List<String> fileRead() throws FileNotFoundException {
         File file = new File(Properties.path);
@@ -30,34 +30,62 @@ public class Parser {
         return emptyStrDeleteList;
     }
 
-    public void pr() throws FileNotFoundException {
-        for(int i= 0; i<emptyStrDelete().size(); i++){
-            String [] s = emptyStrDelete().get(i).split(" ");
-            System.out.println(s.length);
-        }
+
+    private String getGoodsType(String string) {
+        String[] strings = string.split(" ");
+        return strings[0];
     }
 
-    public List<String> getStrList() throws FileNotFoundException {
-        return emptyStrDelete();
-    }
-
-    public String[] getWordList(String string){ //массив строк из большой строки
-        String [] strings = string.split(" ");
+    private String[] getStringMass(String string) {
+        String[] strings = string.split(" ");
         return strings;
     }
 
-    public String getTypeFromFile(String[] strings){
-        String type = strings[0];
-        return type;
+    private String getGoodsParameter(String string, int position) {
+        String[] parameterAndValue = string.split(" ");
+        String[] parameter = parameterAndValue[position].split("=");
+        return parameter[0];
     }
 
-    public String getQuantityFromFile(String[] strings){
-        String nameAndValue = strings[2];
-        String [] nameAndTypeMass = nameAndValue.split("=");
-        String valueWithComma = nameAndTypeMass[1];
-        String [] value =valueWithComma.split(",");
-        return value[0];
+    private String getGoodsParameterValue(String string, int position) {
+        String[] parameterAndValue = string.split(" ");
+        String[] parameter = parameterAndValue[position].split("=");
+        return parameter[1];
     }
+
+
+    private String charDelete(String string) {
+        String[] mass = string.split(",");
+        return mass[0];
+    }
+
+
+    private Map<String, String> getParameterAndValueMap(String string) {
+        Map<String, String> parameterAndValueMap = new HashMap<String, String>();
+        String[] strings = string.split(" ");
+        for (int i = 2; i < strings.length; i++) {
+            String[] parameterAndValueMass = strings[i].split("=");
+            String parameter = parameterAndValueMass[0];
+            String value = charDelete(parameterAndValueMass[1]);
+            parameterAndValueMap.put(parameter, value);
+        }
+
+        return parameterAndValueMap;
+    }
+
+
+    private Map<String, Map<String, String>> fillMap() throws FileNotFoundException {
+        for (int i = 0; i < emptyStrDelete().size(); i++) {
+
+            goodsMap.put(getGoodsType(emptyStrDelete().get(i)), getParameterAndValueMap(emptyStrDelete().get(i)));
+        }
+        return goodsMap;
+    }
+
+    public void print() throws FileNotFoundException {
+        System.out.println(fillMap());
+    }
+
 
 
 }
