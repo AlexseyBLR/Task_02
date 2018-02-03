@@ -2,10 +2,8 @@ package entity;
 
 import entity.Criteria.CriteriaType;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Skiing extends SportEquipment {
 
-public class Bike extends SportEquipment {
     private String type;
     private String title;
     private int quantity;
@@ -51,12 +49,12 @@ public class Bike extends SportEquipment {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Bike bike = (Bike) o;
+        Skiing skiing = (Skiing) o;
 
-        if (quantity != bike.quantity) return false;
-        if (price != bike.price) return false;
-        if (!type.equals(bike.type)) return false;
-        return title.equals(bike.title);
+        if (quantity != skiing.quantity) return false;
+        if (price != skiing.price) return false;
+        if (!type.equals(skiing.type)) return false;
+        return title.equals(skiing.title);
     }
 
     @Override
@@ -71,7 +69,7 @@ public class Bike extends SportEquipment {
 
     @Override
     public String toString() {
-        return "Bike{" +
+        return "Skiing{" +
                 "type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", quantity=" + quantity +

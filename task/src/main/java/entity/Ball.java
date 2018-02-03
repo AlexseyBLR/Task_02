@@ -1,24 +1,12 @@
 package entity;
 
-import entity.Criteria.CriteriaType;
+public class Ball extends SportEquipment {
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Bike extends SportEquipment {
     private String type;
     private String title;
     private int quantity;
     private int price;
 
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getTitle() {
         return title;
@@ -44,6 +32,13 @@ public class Bike extends SportEquipment {
         this.price = price;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -51,12 +46,12 @@ public class Bike extends SportEquipment {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Bike bike = (Bike) o;
+        Ball ball = (Ball) o;
 
-        if (quantity != bike.quantity) return false;
-        if (price != bike.price) return false;
-        if (!type.equals(bike.type)) return false;
-        return title.equals(bike.title);
+        if (quantity != ball.quantity) return false;
+        if (price != ball.price) return false;
+        if (!type.equals(ball.type)) return false;
+        return title.equals(ball.title);
     }
 
     @Override
@@ -71,7 +66,7 @@ public class Bike extends SportEquipment {
 
     @Override
     public String toString() {
-        return "Bike{" +
+        return "Ball{" +
                 "type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", quantity=" + quantity +

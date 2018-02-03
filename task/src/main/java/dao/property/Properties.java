@@ -1,14 +1,16 @@
 package dao.property;
 
+import dao.FileLoader;
+
 import java.io.File;
+import java.io.IOException;
 
 public class Properties {
 
-    public static final String path =  "src" + File.separator + "main" + File.separator + "resources" + File.separator + "goods_DB.txt";
-
-    public static final int titlePosition = 9;
-    public static final int pricePosition = 7;
-    public static final int quantityPosition = 5;
-
+    public static final StringBuilder file() throws IOException {
+        FileLoader loader = new FileLoader("goods_DB.txt");
+        StringBuilder stringBuilder = loader.getLoadedText();
+        return stringBuilder;
+    }
 
 }
