@@ -1,6 +1,7 @@
 package service;
 
 import entity.SportEquipment;
+import service.imput_output_object.Serialization;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +19,14 @@ public class RentUnit {
         if (units.size() < MAX_UNIT_LIST_SIZE) {
             this.units.add(sportEquipment);
         }
-        System.out.println(units);
+        Serialization serialization = new Serialization();
+        serialization.writeFile();
+        System.out.println("User goods: "+"\n"+units+"\n");
 
+    }
+
+    public List<SportEquipment> getUnitsList() {
+        return units;
     }
 
 

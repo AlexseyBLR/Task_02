@@ -2,7 +2,10 @@ package main;
 
 import entity.SportEquipment;
 import service.PrintAll;
+import service.RentUnit;
+import service.RequestObject;
 import service.Search;
+import service.imput_output_object.Deserelezation;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,34 +18,22 @@ public class Main implements Serializable {
 
 
         Search search = new Search();
-        Main main = new Main();
-        search.find(main.requestObj());
+        RequestObject requestObject = new RequestObject();
 
 
 
-        /*
-        в этом месте должна быть десериализация объектов, которые пользователь взял в прокат
-        я не разобрался с этим, поэтому эта часть закомменчена
-         */
 
-//        Deserelezation deserelezation = new Deserelezation();
-//        deserelezation.readFile();
+        search.find(requestObject.requestObj()); //поиск товара и добавление в лист арендованных товаров
 
-        PrintAll printAll = new PrintAll();
+
+
+        Deserelezation deserelezation = new Deserelezation(); //десериализация(вернет [], потому что объектов нет)
+        deserelezation.readFile();
+
+
+        PrintAll printAll = new PrintAll(); //печать всех товаров из магазина
         printAll.printDB();
 
-
-    }
-
-    public SportEquipment requestObj() throws FileNotFoundException {
-
-        ////////Создаются объект запроса
-        SportEquipment sportEquipment = new SportEquipment();
-        sportEquipment.setTitle("Stels");
-        sportEquipment.setPrice(10);
-        ///////
-
-        return sportEquipment;
 
     }
 }

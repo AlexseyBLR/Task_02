@@ -1,14 +1,10 @@
-package service.i_o_db;
+package service.imput_output_object;
 
-import entity.SportEquipment;
 import service.RentUnit;
-import service.Search;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Serialization {
     public void writeFile() throws IOException {
